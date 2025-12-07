@@ -93,3 +93,11 @@ def scenario_with_venv():
 - Deploy ederken aynı ortamı sunucuya aktarabilirsin.
 """)
     print()
+
+
+#Sanal ortam oluşturma -> python -m venv .venv
+#Sanal ortamı aktif mi kontrol etme: which python -> /home/user/code/awesome-project/.venv/bin/python ise çalışıyor
+#.venv içeriğini Git’e eklememek için .gitignore oluşturun -> echo "*" > .venv/.gitignore
+#İşiniz bittiğinde -> deactivate
+
+ 
