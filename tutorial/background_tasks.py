@@ -20,12 +20,13 @@ def save_log_to_file(message: str):
     """
     with open("log.txt", "a") as f:
         f.write(message + "\n")
-
+#with: Dosyayı güvenli şekilde açmak, İş bittiğinde otomatik olarak kapatmak, Hata olsa bile dosyayı kapatmak
 
 # -----------------------------------------------------------
 # NORMAL ENDPOINT (arka plan görevi kullanan)
 # -----------------------------------------------------------
 
+#BackgroundTasks: API cevabı döndükten sonra arka planda işlem yapmanı sağlar.
 @app.post("/process/{username}")
 async def process_user(username: str, background_tasks: BackgroundTasks):
     """
@@ -33,8 +34,8 @@ async def process_user(username: str, background_tasks: BackgroundTasks):
     Kullanıcıya hemen cevap döneriz fakat arka planda log tutmaya devam ederiz.
     """
 
-    # Arkaplan görevine bir işi ekliyoruz
-    background_tasks.add_task(
+    
+    background_tasks.add_task( # add_task -> Arkaplan görevine bir işi ekliyoruz
         save_log_to_file,
         f"User {username} was processed."
     )

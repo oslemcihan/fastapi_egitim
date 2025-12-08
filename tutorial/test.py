@@ -22,8 +22,17 @@ fake_db = {
     "bar": {"id": "bar", "title": "Bar", "description": "The bartenders"}
 }
 
-app = FastAPI()
+app = FastAPI() #yeni bir FastAPI uygulaması oluştur
 
+"""
+Pydantic model;
+Veriyi otomatik doğrulayan (validation)
+JSON → Python dönüşümünü yapan
+Tip güvenliğini garanti eden bir sınıftır (class).
+Şu şekilde anlaşılabilir:
+1) Sınıfın BaseModel'den miras aldığını
+2) Sınıfın içinde alanların (field) tiplerinin belirtildiğini görüyoruz.
+"""
 # Pydantic model
 class Item(BaseModel):
     id: str
@@ -31,10 +40,19 @@ class Item(BaseModel):
     description: str | None = None
 
 
-@app.get("/items/{item_id}", response_model=Item)
+@app.get("/items/{item_id}", response_model=Item) #response_model -> bu endpoint cevap dönerken Item modeline uygun olarak formatlasın.
 async def read_item(
     item_id: str,
-    x_token: Annotated[str, Header()]
+    x_token: Annotated[str, Header()] #Header'dan x_token alıyoruz.
+    #Annotated : Bir değişkene “ek bilgi / metadata” eklemeye yarar.
+    #Bu örnekte ise x_token isimli değişken, string olacak ve değeri HTTP HEADER’dan alınacak.”
+
+    #Header NEDİR?
+    #Bir isteğin kimliğini, yetkisini, formatını taşır
+    #API ile istemci arasında kuralları belirleyen meta bilgidir
+    #Sunucuya "Bu isteği nasıl işleyeceksin?" bilgisini verir
+    #Header örnekleri: Authorization: Bearer 12345abc, X-Token: coneofsilence(bizim kod)
+
 ):
     """
     item_id fake_db içinde yoksa 404 döner.
@@ -51,8 +69,8 @@ async def read_item(
 
 @app.post("/items/", response_model=Item)
 async def create_item(
-    item: Item,
-    x_token: Annotated[str, Header()]
+    item: Item, #Request body’den gelen JSON verisi
+    x_token: Annotated[str, Header()] #Bu fonksiyona x_token isminde bir parametre ver, Header’dan al
 ):
     """
     Yeni item oluşturur.
@@ -83,7 +101,7 @@ from fastapi.testclient import TestClient
 from .main import app
 
 # TestClient örneği
-client = TestClient(app)
+client = TestClient(app) #FastAPI uygulamasını gerçek bir API gibi çalıştır ama gerçek sunucu açma. Test isteklerini bu client üzerinden gönder.
 
 
 def test_read_item_success():

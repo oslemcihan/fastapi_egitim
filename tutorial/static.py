@@ -26,10 +26,10 @@ app = FastAPI()
 # /static/logo.png → static/logo.png dosyasını verir
 # /static/style.css → static/style.css dosyasını verir
 # ----------------------------------------------------------
-app.mount(
+app.mount( # -> FastAPI uygulamasına mini bir uygulama ekler(app.mpunt)
     "/static",                  # kullanıcı buradan erişecek
     StaticFiles(directory="static"),  # dosyaların bulunduğu klasör
-    name="static"
+    name="static" #Bu sadece iç referans ismidir.
 )
 
 

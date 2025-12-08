@@ -39,12 +39,12 @@ def root():
 # Debugging için gereklidir çünkü debug sırasında dosya
 # direkt çalıştırılır ve bu blok sayesinde sunucu açılır.
 # -------------------------------------------------------
-if __name__ == "__main__":
+if __name__ == "__main__": #bu satır Python dosyasının doğrudan çalıştırılıp çalıştırılmadığını kontrol eder.
     # FastAPI uygulamasını uvicorn ile başlat
     # Debugger bu satırdan sonra sunucuyu çalıştırır.
     uvicorn.run(
-        "main:app",    # uygulama yolu
-        host="0.0.0.0",
-        port=8000,
+        "main:app",    # uygulama yolu, FastAPI uygulamasının nerde olduğunu söyler
+        host="0.0.0.0", #Sunucunun hangi IP’den dinleme yapacağını belirtir. "0.0.0.0" → Tüm cihazlardan erişime izin verir.
+        port=8000, #Sunucu 8000 numaralı port üzerinden çalışacaktır.
         reload=False   # Debugger kendi reload işlemini yapar
     )

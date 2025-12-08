@@ -6,7 +6,7 @@ from .routers import users, items
 from .internal import admin
 from .dependencies import get_query_token, get_token_header
 
-# Global dependency: tüm endpoint'lerde çalışır
+# Global dependency: tüm endpoint'lerde çalışır -> Yani tüm endpoint'lerde önce otomatik olarak get_query_token() çalışır.
 app = FastAPI(dependencies=[Depends(get_query_token)])
 
 # users router'ını ekle
@@ -37,12 +37,12 @@ from fastapi import Header, HTTPException
 from typing import Annotated
 
 # Tüm items endpoint'leri bu header'ı ister
-async def get_token_header(x_token: Annotated[str, Header()]):
+async def get_token_header(x_token: Annotated[str, Header()]): #x_token header dan gelir
     if x_token != "fake-super-secret-token":
         raise HTTPException(400, "X-Token header invalid")
 
 # Tüm uygulama get_query_token bağımlılığını global olarak kullanır
-async def get_query_token(token: str):
+async def get_query_token(token: str): #token url den gelir
     if token != "jessica":
         raise HTTPException(400, "Invalid token")
     
@@ -53,7 +53,7 @@ from fastapi import APIRouter
 
 router = APIRouter()  # Mini-FastAPI router
 
-@router.get("/users/", tags=["users"])
+@router.get("/users/", tags=["users"]) #tags=["users"] -> Bu endpoint dokümantasyonda users kategorisi altında görünsün.
 def read_users():
     return [{"username": "Rick"}, {"username": "Morty"}]
 
@@ -71,10 +71,10 @@ def read_user(username: str):
 from fastapi import APIRouter, Depends, HTTPException
 from ..dependencies import get_token_header
 
-router = APIRouter(
+router = APIRouter( # -> bir nevi bu bölümün endpointlerini ayrı bir dosyada toplayalım demektir.
     prefix="/items",                     # tüm path'ler buna eklenir
     tags=["items"],                      # docs için kategori
-    dependencies=[Depends(get_token_header)],  # toplu güvenlik
+    dependencies=[Depends(get_token_header)],  # Bu router’daki her endpoint çalışmadan önce get_token_header() fonksiyonunu çalıştır.(toplu güvnelik)
     responses={404: {"description": "Not found"}}
 )
 
