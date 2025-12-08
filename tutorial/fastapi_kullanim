@@ -1,0 +1,17 @@
+FastAPI’nin geliştirme sunucusunu başlat -> fastapi dev main.py
+
+Çıktı aşağıdaki gibi görünür:
+FastAPI Starting development server 🚀
+Server started at http://127.0.0.1:8000
+Documentation at http://127.0.0.1:8000/docs
+
+FastAPI’yi kurmadan önce:
+    Bir sanal ortam oluştur
+    Sanal ortamı aktif hale getir
+
+Ardından FastAPI + standart eklentiler ile kur -> pip install "fastapi[standard]"
+
+FastAPI’yi yalnızca çekirdek haliyle kurmak için -> pip install fastapi
+
+Eğer standart bağımlılıkları istersin ama fastapi-cloud-cli istemezsen -> 
+pip install "fastapi[standard-no-fastapi-cloud-cli]"
