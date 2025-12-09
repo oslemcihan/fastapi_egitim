@@ -1,4 +1,5 @@
 #FASTAPI - REQUEST BODY EXAMPLE VERİ TANIMLAMA
+#Swagger UI da örnek body verileri oluşturarak API yi daha açıklayıcı yapmak
 
 from fastapi import FastAPI, Body
 from pydantic import BaseModel, Field
@@ -6,7 +7,7 @@ from typing import Annotated
 
 app = FastAPI()
 
-# 1) MODEL SEVİYESİNDE ÖRNEK TANIMI (json_schema_extra)
+# 1) MODEL SEVİYESİNDE ÖRNEK TANIMI (json_schema_extra) -> en iyi yöntemdir btw
 
 class Item(BaseModel):
     """
@@ -33,7 +34,7 @@ class Item(BaseModel):
     }
 
 
-# 2) FIELD(examples) KULLANIMI
+# 2) FIELD(examples) KULLANIMI -> formlar ve de detaylı alan açıklamalarında kullanılır
 
 class ItemWithFieldExamples(BaseModel):
     """
@@ -45,7 +46,7 @@ class ItemWithFieldExamples(BaseModel):
     tax: float | None = Field(default=None, examples=[500.0])
 
 
-# 3) BODY(examples) — TEK ÖRNEK KULLANMA
+# 3) BODY(examples) — TEK ÖRNEK KULLANMA -> sadece bu örnek içindir
 
 @app.put("/items/example-body/{item_id}")
 async def update_item_example_body(
@@ -67,7 +68,7 @@ async def update_item_example_body(
     return {"item_id": item_id, "item": item}
 
 
-# 4) OPENAPI_EXAMPLES — ÇOKLU ÖRNEKLER
+# 4) OPENAPI_EXAMPLES — ÇOKLU ÖRNEKLER -> aynı body için birden çok örenk sunmak istiyorsak
 
 @app.put("/items/multiple-examples/{item_id}")
 async def update_item_multiple_examples(

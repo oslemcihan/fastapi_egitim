@@ -1,4 +1,4 @@
-#FASTAPI - NESTED MODELS EĞİTİM DOSYASI
+#FASTAPI - NESTED MODELS
 #Bir modelin içinde başka bir model, liste, set veya dict kullanabiliyorsan → nested model kullanmışsındır.
 
 from fastapi import FastAPI

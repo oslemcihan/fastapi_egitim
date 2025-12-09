@@ -1,5 +1,6 @@
 #BODY - FIELDS 
-
+#Field -> Tek tek alanlara doğrulama ve açıklama ekler
+#Body -> Endpoint fonksiyonlarında body parametresi olarak kullanılır
 from fastapi import FastAPI, Body
 from typing import Annotated
 from pydantic import BaseModel, Field
@@ -42,7 +43,7 @@ class Item(BaseModel):
 @app.put("/items/{item_id}")
 async def update_item(
     item_id: int,
-    item: Annotated[Item, Body(embed=True)]  # Model embed edilerek alınıyor
+    item: Annotated[Item, Body(embed=True)]  # Model embed edilerek alınıyor -> body içerisnde anahtar oluşturlur (item)
 ):
     """
     embed=True:

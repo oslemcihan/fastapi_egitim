@@ -99,7 +99,7 @@ item → BODY parametresi
 
 @app.put("/items/{item_id}/details")
 async def update_item_details(item_id: int, item: Item, q: str | None = None):
-    result = {"item_id": item_id, **item.dict()}
+    result = {"item_id": item_id, **item.dict()} #**item.dict() ifadesi, item.dict() içindeki tüm key–value çiftlerini ayrı ayrı sözlüğe ekler.
     
     if q:
         result["query_message"] = q

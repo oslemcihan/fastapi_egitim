@@ -1,4 +1,4 @@
-#FASTAPI PATH PARAMETRELERİ EĞİTİM DOSYASI
+#FASTAPI PATH PARAMETRELERİ
 
 from fastapi import FastAPI
 from enum import Enum
