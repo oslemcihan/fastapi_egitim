@@ -13,6 +13,10 @@
 # Form verisi kullanmak için gerekli paket:
 #     pip install python-multipart
 
+
+#Eğer forntenden bana form verisi gelirse ben buradaki öğrendiklerimi kullanacağım 
+#<form method="post" enctype="multipart/form-data">
+
 from typing import Annotated
 from fastapi import FastAPI, Form
 from pydantic import BaseModel

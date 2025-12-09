@@ -1,5 +1,5 @@
 # FastAPI'de middleware kullanımını gösteren tam açıklamalı örnek
-
+#Middleware bir istek geldiğinde: Endpoint çalışmadan ÖNCE devreye girer, Endpoint çalıştıktan SONRA tekrar devreye girer
 import time
 from fastapi import FastAPI, Request
 
@@ -7,10 +7,8 @@ app = FastAPI()
 
 # 1) Middleware oluşturma
 # Her HTTP isteğinde otomatik olarak çalışır
-
-
 @app.middleware("http")
-async def add_process_time_header(request: Request, call_next):
+async def add_process_time_header(request: Request, call_next): #call_next → İsteği asıl endpoint’e ileten fonksiyon
     """
     Bu middleware:
     - İstek geldiğinde zamanı kaydeder

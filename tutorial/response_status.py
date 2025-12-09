@@ -38,7 +38,7 @@ async def delete_item(item_id: int):
     """
     # normalde databaseden silme burada olur
     return None  # body gönderilmez!
-
+#204 işlem başarılı ama sana body döndürmüyorum
 
 #4) 404 – Manuel hata döndürme
 

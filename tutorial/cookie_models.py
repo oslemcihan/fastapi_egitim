@@ -1,5 +1,11 @@
 #FASTAPI COOKIE PARAMETER MODELLERI
-
+#Cookie kullanıcının tarayıscısında saklanan küçük veri parçalarıdır.
+#Ne işe yarar?
+# - Kullanıcı oturumunu takip etme
+# - Güvenlik bilgisi saklama
+# - Kullanıcı tercihlerini saklama
+# - Analitik ve izleme verisi toplama 
+# - Testing bilgisi saklama 
 
 from typing import Annotated
 from fastapi import Cookie, FastAPI

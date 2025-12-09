@@ -1,7 +1,6 @@
 #FASTAPI – PATH OPERATION CONFIGURATION
-# Bu dosya, path operation'ların nasıl yapılandırıldığını
-# geniş açıklamalar ve örnekler ile anlatır.
-
+# Bu dosya, path operation'ların nasıl yapılandırıldığını açıklar
+# TAG: Sadece ve sadece dokümantasyon görünümü için vardır.Sadece Swagger UI (docs) içinde klasör oluşturur.
 from fastapi import FastAPI, status
 from pydantic import BaseModel
 from enum import Enum

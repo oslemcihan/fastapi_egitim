@@ -39,7 +39,7 @@ async def upload(
     return {
         "file_size": len(file),
         "fileb_size": len(fileb_content),
-        "fileb_type": fileb.content_type,
+        "fileb_type": fileb.content_type, #UploadFile, tarayıcıdan gelen Content-Type header’ını tutar. Böylece dosyanın türünü alırız:
         "token": token,
     }
 

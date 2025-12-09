@@ -79,7 +79,7 @@ items = {
 @app.get(
     "/items/{item_id}",
     response_model=Item,
-    response_model_exclude_unset=True
+    response_model_exclude_unset=True #Default değerleri eklemez, sadece gerçek veriyi döndürür
 )
 async def read_item(item_id: str):
     """

@@ -12,7 +12,7 @@ app = FastAPI()
 # Angular: http://localhost:4200
 
 
-allowed_origins = [
+allowed_origins = [ #“Origin” şu demektir: PROTOKOL + DOMAİN + PORT
     "http://localhost:3000",
     "http://localhost:5173",
     "http://localhost:4200",
@@ -28,7 +28,7 @@ allowed_origins = [
 app.add_middleware(
     CORSMiddleware,
     allow_origins=allowed_origins,
-    allow_credentials=True,
+    allow_credentials=True, #true ise wildcard * kullanılamaz
     allow_methods=["*"],       # Tüm HTTP metodlarına izin ver
     allow_headers=["*"],       # Tüm header’lara izin ver
 )

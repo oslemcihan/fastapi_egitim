@@ -45,7 +45,7 @@ async def read_item_with_header(item_id: str):
 
 class UnicornException(Exception):
     """Kendi özel hata sınıfımız."""
-    def __init__(self, name: str):
+    def __init__(self, name: str): #bu exception fırlatıldığında bir isim alır ve bu isim exception objesi içinde saklanıcak. handler bu isme erişebilecek. 
         self.name = name
 
 
@@ -73,7 +73,7 @@ async def validation_handler(request: Request, exc: RequestValidationError):
     Geçersiz veri geldiğinde JSON yerine düz metin döndür.
     """
     return PlainTextResponse(str(exc), status_code=400)
-
+#HTTP hatalarında exc.detail, Validation hatalarında exc veya exc.errors()
 
 # 5) FastAPI + Starlette HTTPExceptions override
 
@@ -83,7 +83,8 @@ async def http_exception_handler(request: Request, exc: StarletteHTTPException):
     JSON yerine düz metin dön. Varsayılan davranışı ez.
     """
     return PlainTextResponse(str(exc.detail), status_code=exc.status_code)
-
+#PlainTextResponse-> düz yazı döner
+#HTTP hatalarında exc.detail, Validation hatalarında exc veya exc.errors()
 
 # 6) Endpoint test
 

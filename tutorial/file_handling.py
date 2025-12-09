@@ -27,6 +27,7 @@ async def upload_bytes(file: Annotated[bytes, File()]):
 # 2) DOSYAYI UploadFile OLARAK ALMA (Tavsiye edilir)
 # UploadFile RAM yerine disk kullanabilir.
 # Daha büyük dosyalar için çok daha verimlidir.
+# Meta bilgilerine erişebilirsin
 
 @app.post("/upload-file/")
 async def upload_file(file: UploadFile):
@@ -40,7 +41,7 @@ async def upload_file(file: UploadFile):
     size = len(contents)
 
     # Dosyayı tekrar okumak için başa sar:
-    await file.seek(0)
+    await file.seek(0) #eğerki tekrar bu dosyayı okursam diye başa getiriyorum konumu
 
     return {
         "filename": file.filename,

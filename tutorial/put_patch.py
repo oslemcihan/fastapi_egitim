@@ -32,7 +32,7 @@ items = {
 @app.put("/items/{item_id}", response_model=Item)
 async def update_item_put(item_id: str, item: Item):
     # Gelen modeli JSON uyumlu veriye çeviriyoruz
-    encoded = jsonable_encoder(item)
+    encoded = jsonable_encoder(item) #Pydantic modelini JSON uyumlu dict'e dönüştürür. Çünkü Pydantic modeli doğrudan kaydedilemez.
 
     # Tüm eski kayıt silinir, yerine yeni kayıt yazılır
     items[item_id] = encoded
@@ -48,7 +48,7 @@ async def update_item_patch(item_id: str, item: Item):
     # Önce eski kaydı alın
     stored_item_data = items[item_id]
 
-    # Pydantic modele dönüştür
+    # Pydantic modele dönüştür, Yani eski kaydı Item modeline dönüştür
     stored_item_model = Item(**stored_item_data)
 
     # Gönderilmeyen alanları dışarıda bırak (exclude_unset)

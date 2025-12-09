@@ -1,4 +1,4 @@
-#JSONABLE_ENCODER - DETAYLI AÇIKLAMALI ÖRNEK
+#JSONABLE_ENCODER
 # Bu dosya, FastAPI'nin jsonable_encoder() fonksiyonunun
 # ne zaman ve neden kullanıldığını öğretmek için hazırlanmıştır.
 
