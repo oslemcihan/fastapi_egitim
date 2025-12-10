@@ -14,7 +14,7 @@ async def common_parameters(q: str | None = None, skip: int = 0, limit: int = 10
     return {"q": q, "skip": skip, "limit": limit}
 
 # Annotated alias ile bağımlılığı daha kısa kullanıyoruz
-
+#commons: dict = Depends(common_parameters) -> bunu yapmak yerine:
 CommonsDep = Annotated[dict, Depends(common_parameters)]
 
 # Endpoint 1

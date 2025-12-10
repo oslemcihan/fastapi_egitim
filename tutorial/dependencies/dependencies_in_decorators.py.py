@@ -12,7 +12,7 @@ app = FastAPI()
 # Eğer değer yanlışsa hata fırlatır.
 # Bu fonksiyon bir şey döndürmez — yalnızca kontrol yapar.
 
-async def verify_token(x_token: Annotated[str, Header()]):
+async def verify_token(x_token: Annotated[str, Header()]): #Header dan x_token değerini okur
     if x_token != "fake-super-secret-token":
         raise HTTPException(status_code=400, detail="X-Token header invalid")
 
@@ -36,7 +36,7 @@ async def verify_key(x_key: Annotated[str, Header()]):
 # endpoint çalışmadan ÖNCE çalıştırılır.
 # Eğer bir tanesi hata fırlatırsa, fonksiyon hiç çağrılmaz.
 
-@app.get("/items/", dependencies=[Depends(verify_token), Depends(verify_key)])
+@app.get("/items/", dependencies=[Depends(verify_token), Depends(verify_key)]) #endpoint içerisine dependency' leri parammetre olarak bağlamadık ama decarator içerine ekledik yani ikiside çalışırsa endpoint çalışıcak
 async def read_items():
     # Burada artık token veya key kontrolünden geçmiş oluyoruz.
     return [{"item": "Foo"}, {"item": "Bar"}]

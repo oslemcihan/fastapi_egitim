@@ -74,7 +74,7 @@ async def get_username():
 @app.get("/secure/{item}")
 async def secure_item(
     item: str,
-    username: Annotated[str, Depends(get_username)]
+    username: Annotated[str, Depends(get_username)] #usernmae rewuest tarafından göndeerilmez bu değer get_usernmae dependency den gelir
 ):
     if item != "portal-gun":
         raise DangerousItemError("Sadece portal-gun kullanılabilir")
