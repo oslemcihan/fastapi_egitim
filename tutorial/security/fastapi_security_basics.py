@@ -8,11 +8,11 @@ from fastapi.security import OAuth2PasswordBearer
 
 app = FastAPI()
 
-# 1) OAuth2PasswordBearer
+# 1) OAuth2PasswordBearer -> Authorization: Bearer <token>. header' ını okumak için hazır bir sınıf
 # Bu, "Authorization: Bearer <token>" header'ından token alır.
 # Bir login endpoint'i ileride token üretecek.
 
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl="login")
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="login") #token /login endpointidnde aınacağını söyler aynı zamanda Swagger de "Authorize" butonunun çalışmasını sağlar.
 
 
 # 2) TOKEN DOĞRULAMA DEPENDENCY'Sİ

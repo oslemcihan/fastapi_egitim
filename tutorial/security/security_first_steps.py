@@ -14,7 +14,7 @@ app = FastAPI()
 # tokenUrl="token" -> Frontend kullanıcı adı + şifreyi bu
 # adrese göndererek token isteyecek.
 # Bu endpointi daha sonra yazacağız.
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token") #bu kod satırı aslında bu uygulamada Bearer token kullanılacak derç
 
 
 # 2) Bu endpoint'e erişebilmek için Bearer token gerekli.
